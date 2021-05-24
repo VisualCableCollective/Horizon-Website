@@ -29,3 +29,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Additional packages
 - [Material-UI](https://material-ui.com/)
+- [styled-components](https://styled-components.com/)
