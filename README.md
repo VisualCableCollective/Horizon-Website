@@ -29,4 +29,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Additional packages
 - [Material-UI](https://material-ui.com/)
+- [Material-UI Icons](https://material-ui.com/components/icons/)
 - [styled-components](https://styled-components.com/)

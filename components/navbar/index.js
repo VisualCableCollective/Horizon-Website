@@ -16,6 +16,8 @@ const NavbarWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  position: fixed;
+  padding-left: 200px;
 `;
 
 const Title = styled.h1`
