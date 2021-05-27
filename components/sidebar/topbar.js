@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Icons
-import DehazeIcon from '@material-ui/icons/Dehaze';
+import CloseIcon from '@material-ui/icons/Close';
 
 export default function Topbar({ setIsSidebarCollapsed }) {
   function closeSidebar() {
@@ -11,7 +11,7 @@ export default function Topbar({ setIsSidebarCollapsed }) {
   return (
   <TopbarWrapper>
     <CloseButton onClick={ closeSidebar }>
-      <DehazeIcon style={{ fontSize: 30 }}/>
+      <CloseIcon style={{ fontSize: 30 }}/>
     </CloseButton>
   </TopbarWrapper>);
 }
