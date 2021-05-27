@@ -2,20 +2,22 @@ import styled, {css} from "styled-components";
 
 // Components
 import Topbar from "./topbar";
+import SidebarItem from "./sidebaritem";
 
-import { useState } from "react";
+import HomeIcon from '@material-ui/icons/Home';
 
-export default function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+export default function Sidebar({isSidebarCollapsed, setIsSidebarCollapsed}) {
+
   return (
-  <SidebarWrapper collapsed={isCollapsed}>
-    <Topbar setIsSidebarCollapsed={setIsCollapsed}/>
+  <SidebarWrapper collapsed={isSidebarCollapsed}>
+    <Topbar setIsSidebarCollapsed={setIsSidebarCollapsed}/>
+    <SidebarItem title="Home" href="/" icon={<HomeIcon style={{height: "24px", width: "24px"}} />} />
   </SidebarWrapper>);
 }
 
 const SidebarWrapper = styled.div`
-  background-color: #424242;
-  width: 200px;
+  background-color: #212121;
+  width: 300px;
   min-height: 100vh;
   position: fixed;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -23,6 +25,6 @@ const SidebarWrapper = styled.div`
   ${props =>
     props.collapsed &&
     css`
-      transform: translateX(-200px);
+      transform: translateX(-300px);
     `};
 `;

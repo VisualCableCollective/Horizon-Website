@@ -29,4 +29,5 @@ const CloseButton = styled.button`
   border: none;
   color: white;
   padding: 0;
+  cursor: pointer;
 `;
