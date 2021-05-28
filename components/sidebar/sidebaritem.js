@@ -26,7 +26,7 @@ const ItemWrapper = styled.a`
   align-items: center;
   color: rgba(255, 255, 255, 0.8);
   transition: color 0.2s ease-in-out;
-  &:hover ${ItemWrapper} {
+  &:hover {
     color: rgba(255, 255, 255, 1);
   }
 `;
