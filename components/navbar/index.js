@@ -3,15 +3,29 @@ import { Container } from "@material-ui/core";
 
 // Components
 import OpenSidebarButton from "../sidebar/opensidebarbutton";
+import NavbarItem from "./navbaritem";
 
-export default function Navbar({setIsSidebarCollapsed}) {
+// Icons
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
+export default function Navbar({ setIsSidebarCollapsed }) {
   return (
-  <NavbarWrapper>
-    <OpenSidebarButton setIsSidebarCollapsed={setIsSidebarCollapsed} />
-    <NavigationContainer maxWidth="md">
-      <img src="/horizon.svg" height={30}/>
-    </NavigationContainer>
-  </NavbarWrapper>);
+    <NavbarWrapper>
+      <OpenSidebarButton setIsSidebarCollapsed={setIsSidebarCollapsed} />
+      <NavigationContainer maxWidth="md">
+        <CommonItems>
+          <NavbarItem icon={<img src="/horizon.svg" height={30} />} href="/" />
+        </CommonItems>
+        <AccountItems>
+          <NavbarItem
+            title="Sign In"
+            icon={<AccountCircleIcon style={{ height: "1em" }} />}
+            href="/auth/login"
+          />
+        </AccountItems>
+      </NavigationContainer>
+    </NavbarWrapper>
+  );
 }
 
 const NavbarWrapper = styled.div`
@@ -24,10 +38,19 @@ const NavbarWrapper = styled.div`
 `;
 
 const NavigationContainer = styled(Container)`
-  margin-left: 300px!important;
+  margin-left: 300px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
-const Title = styled.h1`
-margin: 0;
-font-size: large;
+const CommonItems = styled.div`
+  display: flex !important;
+  align-items: center;
+`;
+
+const AccountItems = styled.div`
+  display: flex !important;
+  align-items: center;
 `;
