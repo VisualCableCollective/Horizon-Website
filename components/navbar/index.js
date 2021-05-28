@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Container } from "@material-ui/core";
 
+import Config from "../../Config";
+
 // Components
 import OpenSidebarButton from "../sidebar/opensidebarbutton";
 import NavbarItem from "./navbaritem";
@@ -20,7 +22,7 @@ export default function Navbar({ setIsSidebarCollapsed }) {
           <NavbarItem
             title="Sign In"
             icon={<AccountCircleIcon style={{ height: "1em" }} />}
-            href="/auth/login"
+            href={Config.getAPIServerURL() + encodeURI("/auth/vcc/redirect?method=web-app")}
           />
         </AccountItems>
       </NavigationContainer>
