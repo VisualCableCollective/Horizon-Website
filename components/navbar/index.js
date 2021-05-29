@@ -6,11 +6,13 @@ import Config from "../../Config";
 // Components
 import OpenSidebarButton from "../sidebar/opensidebarbutton";
 import NavbarItem from "./navbaritem";
+import AccountItems from "./accountitems";
 
 // Icons
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-export default function Navbar({ setIsSidebarCollapsed }) {
+export default function Navbar({ setIsSidebarCollapsed, isUserAuthenticated }) {
+  console.log("got " + isUserAuthenticated);
   return (
     <NavbarWrapper>
       <OpenSidebarButton setIsSidebarCollapsed={setIsSidebarCollapsed} />
@@ -18,13 +20,7 @@ export default function Navbar({ setIsSidebarCollapsed }) {
         <CommonItems>
           <NavbarItem icon={<img src="/horizon.svg" height={30} />} href="/" />
         </CommonItems>
-        <AccountItems>
-          <NavbarItem
-            title="Sign In"
-            icon={<AccountCircleIcon style={{ height: "1em" }} />}
-            href={Config.getAPIServerURL() + encodeURI("/auth/vcc/redirect?method=web-app")}
-          />
-        </AccountItems>
+        <AccountItems isUserAuthenticated={isUserAuthenticated} />
       </NavigationContainer>
     </NavbarWrapper>
   );
@@ -48,11 +44,6 @@ const NavigationContainer = styled(Container)`
 `;
 
 const CommonItems = styled.div`
-  display: flex !important;
-  align-items: center;
-`;
-
-const AccountItems = styled.div`
   display: flex !important;
   align-items: center;
 `;
