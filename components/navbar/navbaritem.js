@@ -1,15 +1,21 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function NavbarItem({ icon, title, href, active = false }) {
   const [isActive, setIsActive] = useState(active);
+  const router = useRouter();
 
   return (
     <Link href={href} passHref>
       <ItemWrapper>
         {icon}
-        {title && <ItemTitle>{title}</ItemTitle>}
+        {title && (
+          <ItemTitle active={router.asPath === href ? true : false}>
+            {title}
+          </ItemTitle>
+        )}
       </ItemWrapper>
     </Link>
   );
@@ -25,6 +31,11 @@ const ItemWrapper = styled.a`
   &:hover {
     color: rgba(255, 255, 255, 1);
   }
+  ${(props) =>
+    props.active &&
+    css`
+      color: rgba(255, 255, 255, 1);
+    `};
 `;
 
 const ItemTitle = styled.h1`

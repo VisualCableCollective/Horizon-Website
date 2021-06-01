@@ -1,16 +1,18 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 
 export default function SidebarItem({ icon, title, href, active = false }) {
   const [isActive, setIsActive] = useState(active);
-
+  const router = useRouter();
+  
   return (
     <Link href={href} passHref>
-      <ItemWrapper>
+      <ItemWrapper active={router.asPath === href ? true : false}>
         {icon}
         <ItemTitle>{title}</ItemTitle>
       </ItemWrapper>
@@ -29,6 +31,11 @@ const ItemWrapper = styled.a`
   &:hover {
     color: rgba(255, 255, 255, 1);
   }
+  ${(props) =>
+    props.active &&
+    css`
+      color: rgba(255, 255, 255, 1);
+    `};
 `;
 
 const ItemTitle = styled.h1`
