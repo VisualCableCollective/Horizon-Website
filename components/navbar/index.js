@@ -33,6 +33,7 @@ const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   position: fixed;
+  top: 0;
 `;
 
 const NavigationContainer = styled(Container)`
