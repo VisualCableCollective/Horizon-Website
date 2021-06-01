@@ -4,7 +4,7 @@ import {useState} from "react";
 import HorizonAPIHandler from "../handlers/HorizonAPIHandler";
 
 function MyApp({ Component, pageProps }) {
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   pageProps.isUserAuthenticated = isUserAuthenticated;
   pageProps.setIsUserAuthenticated = setIsUserAuthenticated;
 

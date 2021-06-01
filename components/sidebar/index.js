@@ -5,6 +5,7 @@ import Topbar from "./topbar";
 import SidebarItem from "./sidebaritem";
 
 import HomeIcon from '@material-ui/icons/Home';
+import AppsIcon from '@material-ui/icons/Apps';
 
 export default function Sidebar({isSidebarCollapsed, setIsSidebarCollapsed}) {
 
@@ -12,6 +13,7 @@ export default function Sidebar({isSidebarCollapsed, setIsSidebarCollapsed}) {
   <SidebarWrapper collapsed={isSidebarCollapsed}>
     <Topbar setIsSidebarCollapsed={setIsSidebarCollapsed}/>
     <SidebarItem title="Home" href="/" icon={<HomeIcon style={{height: "24px", width: "24px"}} />} />
+    <SidebarItem title="My Products" href="/developers/my-products" icon={<AppsIcon style={{height: "24px", width: "24px"}} />} />
   </SidebarWrapper>);
 }
 
