@@ -12,6 +12,7 @@ export default function Auth({token, setIsUserAuthenticated}) {
     HorizonAPIClient.authenticateUserWithToken(token).then(
       (result) => {
         if(result === true){
+          localStorage.setItem("authToken", token);
           setIsUserAuthenticated(true);
           router.push("/");
         }else{
