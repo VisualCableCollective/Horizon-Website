@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import {useState} from "react";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { useState } from "react";
 
 import Config from "../../Config";
 
@@ -15,7 +14,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 export default function AccountItems({ isUserAuthenticated }) {
   return (
     <AccountItemsWrapper>
-      {isUserAuthenticated ? <UserItems/> : <GuestItems />}
+      {isUserAuthenticated ? <UserItems /> : <GuestItems />}
     </AccountItemsWrapper>
   );
 }
@@ -46,9 +45,14 @@ function UserItems() {
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Open Menu
-      </Button>
+      <ItemWrapper
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <AccountCircleIcon style={{ height: "1em" }} />
+        <ItemTitle>My Account</ItemTitle>
+      </ItemWrapper>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -67,4 +71,24 @@ function UserItems() {
 const AccountItemsWrapper = styled.div`
   display: flex !important;
   align-items: center;
+`;
+
+const ItemWrapper = styled.a`
+  height: 40px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+`;
+
+const ItemTitle = styled.h1`
+  padding-left: 10px;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0;
 `;
