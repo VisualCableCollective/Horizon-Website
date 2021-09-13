@@ -4,6 +4,7 @@
   "description": "API wrapper for the Horizon store",
   "author": "VisualCableCollective",
   "repository": "https://github.com/VisualCableCollective/Horizon-API-Client-TS",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -12,10 +13,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
-    "test:build": "run-s build",
-    "test:lint": "eslint .",
+    "test": "run-s test:unit",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom"
   },
@@ -50,7 +48,8 @@
     "react-scripts": "^3.4.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "jest": "^24.9.0"
   },
   "files": [
     "dist"
