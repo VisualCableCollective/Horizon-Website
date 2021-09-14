@@ -60,7 +60,7 @@ function LoginForm() {
     <AuthFormWrapper>
       <form onSubmit={loginUser}>
         <FormBrandLogo />
-        <FormTitle title="Sign in to your VCC account." />
+        <FormTitle title="Sign in to your Horizon account." />
         {areCredentialsInvalid && <p className="text-red-500 pb-1">Incorrect credentials.</p>}
         <EmailUsernameInput isInvalid={areCredentialsInvalid} />
         <PasswordInput isInvalid={areCredentialsInvalid} />
@@ -72,7 +72,7 @@ function LoginForm() {
         </InputRow>
         <SubmitButton title="Sign In" titleOnLoading="Signing In..." isLoading={isLoggingIn} />
         <div className="mt-5 text-sm">
-          <p className="text-dark">Don&apos;t have a VCC account yet? <a className="text-dark-hover hover:text-white" href="https://vcc-online.eu/register">Sign Up</a></p>
+          <p className="text-dark">Don&apos;t have a Horizon account yet? <a className="text-dark-hover hover:text-white" href="https://vcc-online.eu/register">Sign Up</a></p>
         </div>
       </form>
     </AuthFormWrapper>
