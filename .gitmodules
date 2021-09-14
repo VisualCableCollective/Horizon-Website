@@ -1,0 +1,3 @@
+[submodule "modules/horizon-api-client"]
+	path = modules/horizon-api-client
+	url = https://github.com/VisualCableCollective/Horizon-API-Client-TS.git
