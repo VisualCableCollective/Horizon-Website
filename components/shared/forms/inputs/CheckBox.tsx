@@ -1,9 +1,9 @@
 interface Props {
-    title: String
+  title: String
 }
 
 export function CheckBox(props: Props) {
-    return (
+  return (
         <div className="inline-flex items-center pr-2">
 
             <input type="checkbox"
@@ -14,5 +14,5 @@ export function CheckBox(props: Props) {
             <span className="ml-2">{props.title}</span>
 
         </div>
-    )
+  );
 }
