@@ -1,7 +1,7 @@
+import { LoginStatus } from 'horizon-api-client';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
-import { LoginStatus } from '../../../enums/LoginStatus';
 import { SubmitButton } from '../../shared/buttons/SubmitButton';
 import FormBrandLogo from '../../shared/forms/FormBrandLogo';
 import { EmailUsernameInput } from '../../shared/forms/inputs/auth/EmailUsernameInput';

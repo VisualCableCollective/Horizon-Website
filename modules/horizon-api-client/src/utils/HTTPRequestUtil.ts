@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import { LOG_PREFIX } from '../HorizonAPIClient';
 import { ROUTE_ID_REPLACE_PLACEHOLDER } from '../constants/routes';
 import APIRoute, { RequestMethod } from '../models/APIRoute';
 import { HorizonAPIClientConfig } from '..';
@@ -17,13 +16,13 @@ export class HTTPRequestUtil {
     Connection: 'keep-alive',
   });
 
-  async Request(route: APIRoute, data: any = null, debug = false) {
+  async Request(route: APIRoute, data: any = null) {
     const routeCopy = route;
 
     // checks
     if (route.requiresID) {
       if (!route.ID) {
-        console.error(`${LOG_PREFIX}Canceled request because ID was missing`);
+        console.error(`${this.Config.LogPrefix}Canceled request because ID was missing`);
         return null;
       }
 
@@ -33,7 +32,7 @@ export class HTTPRequestUtil {
 
     if (route.requiresParentRoute) {
       if (route.parentRoute === undefined) {
-        console.error(`${LOG_PREFIX}Canceled request because parent route was missing`);
+        console.error(`${this.Config.LogPrefix}Canceled request because parent route was missing`);
         return null;
       }
 
@@ -61,9 +60,9 @@ export class HTTPRequestUtil {
       options.body = JSON.stringify(data);
     }
 
-    if (debug) {
-      console.log(`Sending request to: ${this.Config.ServerUrl}${routeCopy.route}`);
-      console.log(`Options: ${JSON.stringify(options)}`);
+    if (this.Config.Debug) {
+      console.log(`[RequestUtil] Sending request to ${this.Config.ServerUrl}${routeCopy.route}`);
+      console.log(`[RequestUtil] Data: ${JSON.stringify(options)}}`);
     }
 
     let response: Response;
