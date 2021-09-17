@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "horizon-api-client": "./modules\\horizon-api-client",
+    "lottie-react": "^2.1.0",
     "next": "latest",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
