@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function HorizonAPIContextProvider(props: Props) {
-  const client = new HorizonAPIClient(new HorizonAPIClientConfig(2, 'ZmWrSAT1TURrY8skR5OjRngbYomoHyzTYG7wQYa5', Environment.LocalDevelopment, 'http://localhost:8000/'));
+  const client = new HorizonAPIClient(new HorizonAPIClientConfig(2, 'ZmWrSAT1TURrY8skR5OjRngbYomoHyzTYG7wQYa5', Environment.LocalDevelopment, 'http://localhost:8000/api/'));
 
   const context = {
     client,

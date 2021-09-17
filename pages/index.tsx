@@ -1,7 +1,26 @@
+import { Team } from 'horizon-api-client';
+import { useEffect, useState } from 'react';
 import { MainLayout } from '../components/layouts/MainLayout';
-import { ProductBanner } from '../components/store/products/ProductBanner';
+import { PreviewStyle, ProductPreviewItem } from '../components/store/products/ProductPreviewItem';
+import { useHorizonAPI } from '../contexts/HorizonAPIContext';
 
 export default function Home() {
+  const api = useHorizonAPI();
+
+  const [vccTeamData, setVccTeamData] = useState<Team>();
+
+  useEffect(() => {
+    api.client.getTeam(1, true)
+      .then((response) => {
+        if (!response.success) {
+          console.error('Error while fetching team 1');
+          return;
+        }
+
+        setVccTeamData(response.data);
+      });
+  }, []);
+
   return (
     <MainLayout>
       <div className="m-10 max-w-screen-2xl mx-auto">
@@ -15,7 +34,10 @@ export default function Home() {
         </div>
         <h1 className="text-xl font-bold mb-4 mt-6">Products by The VisualCable Collective</h1>
         <div className="products-row flex flex-wrap gap-4">
-          <ProductBanner />
+          { vccTeamData && vccTeamData.products.map((product) => {
+            product.creator = vccTeamData;
+            return <ProductPreviewItem key={product.id} style={PreviewStyle.Store} product={product} />;
+          }) }
         </div>
       </div>
     </MainLayout>
