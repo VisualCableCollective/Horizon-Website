@@ -35,7 +35,7 @@ export function AuthContextProvider(props: Props) {
   const [user, setUser] = useState(new AuthUser());
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const [cookies, setCookie] = useCookies(['auth']);
+  const [cookies, setCookie, removeCookie] = useCookies(['auth']);
 
   async function loginHandler(emailOrUsername: string, password: string) {
     const response = await apiClient.client.authenticateUserWithCredentials(emailOrUsername, password);
@@ -65,13 +65,17 @@ export function AuthContextProvider(props: Props) {
     return LoginStatus.Success;
   }
 
+  function logoutHandler() {
+    removeCookie('auth');
+    setUser(new AuthUser());
+    setIsAuthenticated(false);
+  }
+
   const context = {
     user: user,
     isAuthenticated: isAuthenticated,
     login: loginHandler,
-    logout: () => {
-      console.error('Logout is not implemented yet!');
-    },
+    logout: logoutHandler,
   };
 
   useEffect(() => {
