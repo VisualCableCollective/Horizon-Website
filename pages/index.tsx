@@ -1,25 +1,11 @@
-import { Team } from 'horizon-api-client';
-import { useEffect, useState } from 'react';
+import { HorizonAPIClient, HorizonAPIClientConfig, Environment, Team } from 'horizon-api-client';
 import { MainLayout } from '../components/layouts/MainLayout';
 import { PreviewStyle, ProductPreviewItem } from '../components/store/products/ProductPreviewItem';
-import { useHorizonAPI } from '../contexts/HorizonAPIContext';
+import { GetStaticProps, InferGetStaticPropsType  } from 'next';
 
-export default function Home() {
-  const api = useHorizonAPI();
 
-  const [vccTeamData, setVccTeamData] = useState<Team>();
-
-  useEffect(() => {
-    api.client.getTeam(1, true)
-      .then((response) => {
-        if (!response.success) {
-          console.error('Error while fetching team 1');
-          return;
-        }
-
-        setVccTeamData(response.data);
-      });
-  }, []);
+export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
+  let vccTeam = new Team(JSON.parse(props.vccTeamData));
 
   return (
     <MainLayout>
@@ -33,11 +19,27 @@ export default function Home() {
       </div>
       <h1 className="text-xl font-bold mb-4 mt-6">Products by The VisualCable Collective</h1>
       <div className="products-row flex flex-wrap gap-4">
-        {vccTeamData && vccTeamData.products.map((product) => {
-          product.creator = vccTeamData;
+        {vccTeam.products && vccTeam.products.map((product) => {
+          product.creator = vccTeam;
           return <ProductPreviewItem key={product.id} style={PreviewStyle.Store} product={product} />;
         })}
       </div>
     </MainLayout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const client = new HorizonAPIClient(new HorizonAPIClientConfig(0, '', Environment.LocalDevelopment));
+
+  const vccTeamData = await (await client.getTeam(1, true)).data;
+
+  // the whole parsing is shitty but the Date type in the Team model seems to cause issues
+  const parsedData = JSON.stringify(vccTeamData);
+
+  return {
+    props: {
+      vccTeamData: parsedData,
+    },
+    revalidate: 1, // data never older than 10 seconds
+  };
+};
