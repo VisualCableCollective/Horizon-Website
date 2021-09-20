@@ -4,8 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "preinstall": "cd ./modules/horizon-api-client && yarn && yarn build"
+    "lint": "next lint"
   },
   "dependencies": {
     "horizon-api-client": "./modules\\horizon-api-client",
