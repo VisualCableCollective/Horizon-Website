@@ -1785,7 +1785,7 @@ hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0:
     react-is "^16.7.0"
 
 "horizon-api-client@./modules\\horizon-api-client":
-  version "1.0.9"
+  version "1.0.10"
   dependencies:
     node-fetch "^3.0.0"
 
